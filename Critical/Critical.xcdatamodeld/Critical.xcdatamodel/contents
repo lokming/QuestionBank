@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="13E28" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Bank" representedClassName="Bank" syncable="YES">
+        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="thesection" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Section" inverseName="bank" inverseEntity="Section" syncable="YES"/>
+    </entity>
+    <entity name="Question" representedClassName="Question" syncable="YES">
+        <attribute name="sentence" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="set" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Set" inverseName="question" inverseEntity="Set" syncable="YES"/>
+    </entity>
+    <entity name="Section" representedClassName="Section" syncable="YES">
+        <attribute name="division" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="bank" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Bank" inverseName="thesection" inverseEntity="Bank" syncable="YES"/>
+        <relationship name="thesubsection" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Subsection" inverseName="section2" inverseEntity="Subsection" syncable="YES"/>
+    </entity>
+    <entity name="Set" representedClassName="Set" syncable="YES">
+        <attribute name="group" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="question" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Question" inverseName="set" inverseEntity="Question" syncable="YES"/>
+        <relationship name="subsections" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Subsection" inverseName="set" inverseEntity="Subsection" syncable="YES"/>
+    </entity>
+    <entity name="Subsection" representedClassName="Subsection" syncable="YES">
+        <attribute name="subdivision" optional="YES" attributeType="String" defaultValueString="this subdivision default" syncable="YES"/>
+        <relationship name="section2" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Section" inverseName="thesubsection" inverseEntity="Section" syncable="YES"/>
+        <relationship name="set" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Set" inverseName="subsections" inverseEntity="Set" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Bank" positionX="-144" positionY="-198" width="128" height="73"/>
+        <element name="Question" positionX="567" positionY="89" width="128" height="73"/>
+        <element name="Section" positionX="99" positionY="-175" width="128" height="88"/>
+        <element name="Set" positionX="387" positionY="-27" width="128" height="88"/>
+        <element name="Subsection" positionX="403" positionY="-198" width="128" height="88"/>
+    </elements>
+</model>
